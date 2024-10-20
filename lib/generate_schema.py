@@ -29,6 +29,13 @@ def generate_schema(df: pd.DataFrame, output_file: str) -> None:
                 bson_type = "array"
             elif data_type.lower() == "string":
                 bson_type = "string"
+            elif data_type.lower() == "number":
+                bson_type = "double"
+            elif data_type.lower() == "email":
+                bson_type = "string"
+                schema["properties"][field_name][
+                    "pattern"
+                ] = r"^[\w\.-]+@[\w\.-]+\.\w+$"
             # Add more type mappings as needed
 
         schema["properties"][field_name] = {

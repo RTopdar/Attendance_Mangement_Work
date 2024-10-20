@@ -15,6 +15,7 @@ client = None
 db = None
 
 try:
+    print(f"Connecting to MongoDB: {MONGO_URI}")
     client = MongoClient(MONGO_URI)
     db = client["Attendance_DB"]
     print("Successfully connected to MongoDB.")
